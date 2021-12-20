@@ -1,1 +1,14 @@
-<router-outlet></router-outlet>
+<div>
+    <div class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main"
+        id="panel">
+        <app-sidebar></app-sidebar>
+    </div>
+    <div class="main-content" id="panel">
+        <app-header></app-header>
+        <app-beadcumbs></app-beadcumbs>
+        <div class="container-fluid mt--6">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    
+</div>

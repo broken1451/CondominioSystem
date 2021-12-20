@@ -18,7 +18,8 @@ const routes: Routes = [
         component: RegisterComponent,
         data: {titulo: 'Registro', descrip: 'Esto es la pagina de registro'}
       },
-      { path: '**', component: LoginComponent },
+      // { path: '**', component: LoginComponent },
+      { path: '**', redirectTo: 'login' },
     ],
   },
 ];
@@ -28,3 +29,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class ComponentsRoutingModule { }
+

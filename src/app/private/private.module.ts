@@ -4,7 +4,8 @@ import { CommonModule } from '@angular/common';
 import { PrivateRoutingModule } from './private-routing.module';
 import { PrivateComponent } from './private.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
+import { MomentModule } from 'angular2-moment';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
   ],
   imports: [
     CommonModule,
-    PrivateRoutingModule
+    PrivateRoutingModule,
+    MomentModule,
+    SharedModule
   ]
 })
 export class PrivateModule { }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ComponentsComponent } from './components/components.component';
+import { PrivateComponent } from './private/private.component';
 
 const routes: Routes = [
   {
@@ -11,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'private',
-    component: ComponentsComponent,
+    component: PrivateComponent,
     loadChildren: () =>
       import('./private/private.module').then((m) => m.PrivateModule),
   },
