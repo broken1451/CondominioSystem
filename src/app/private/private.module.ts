@@ -6,17 +6,21 @@ import { PrivateComponent } from './private.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MomentModule } from 'angular2-moment';
 import { SharedModule } from '../shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
     PrivateComponent,
-    DashboardComponent
+    DashboardComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
     PrivateRoutingModule,
     MomentModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class PrivateModule { }

@@ -6,11 +6,17 @@ export interface UserResponse {
 }
 
 export interface User {
-    _id: string;
-    name: string;
-    img: string;
-    email: string;
-    created: string | Date | any;
+    _id?: string;
+    name?: string;
+    img?: string;
+    email?: string;
+    created?: string | Date | any;
+}
+export interface UserUpdate {
+    name?: string;
+    img?: string;
+    email?: string;
+
 }
 
 export interface UserLogin {
@@ -20,6 +26,22 @@ export interface UserLogin {
 }
 
 export interface UserLoginLocalStorage {
+    _id:      string;
+    name:     string;
+    img:      string;
+    email:    string;
+    password: string;
+    created:  Date;
+    __v:      number;
+}
+
+export interface UserUpdateResponse {
+    ok:        boolean;
+    mensaje:   string;
+    userSaved: UserSaved;
+}
+
+export interface UserSaved {
     _id:      string;
     name:     string;
     img:      string;

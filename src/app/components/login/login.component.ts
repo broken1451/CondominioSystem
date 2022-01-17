@@ -53,6 +53,8 @@ export class LoginComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]],
       recuerdame: [false]
     });
+
+    this.authService.cargarStorage();
     
     if (localStorage.getItem('email')) {
       this.formValues.email.setValue(JSON.parse(localStorage.getItem('email')!))
@@ -64,25 +66,21 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  login(){
+  async login(){
     if (this.form.invalid) {
       return;
     }
-
-    const UserLogin: UserLoginRequest ={
+    const UserLogin: UserLoginRequest = {
       email: this.formValues.email.value,
       password: this.formValues.password.value,
       recuerdame: this.formValues.recuerdame.value,
     }
 
     this.authService.login(UserLogin, UserLogin.recuerdame).subscribe(res=>{
-      console.log({ res });
       if (res) {
         this.router.navigate(['/private/dashboard']);
       }
     })
-    // console.log({UserLogin})
-
   }
 
   campoNoEsValido(campo: string) {
