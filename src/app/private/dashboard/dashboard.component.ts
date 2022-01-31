@@ -115,10 +115,7 @@ export class DashboardComponent implements OnInit {
     try {
       this.user.name = this.formUpdate.name.value;
       this.user.email = this.formUpdate.email.value;
-      console.log(this.user)
-
-      $('#myModal').modal('hide')
-
+      $('#myModal').modal('hide');
       this.userService.updateUser(this.user)?.subscribe((updateUser: UserUpdateResponse) => {
         Swal.fire({
           title: 'Actualizado existosamente',

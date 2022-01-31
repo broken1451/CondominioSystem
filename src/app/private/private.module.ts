@@ -8,12 +8,14 @@ import { MomentModule } from 'angular2-moment';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
+import { ImagenPipe } from './pipes/imagen.pipe';
 
 @NgModule({
   declarations: [
     PrivateComponent,
     DashboardComponent,
-    ProfileComponent
+    ProfileComponent,
+    ImagenPipe
   ],
   imports: [
     CommonModule,
