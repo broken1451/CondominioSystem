@@ -15,6 +15,7 @@ export class AuthService {
 
   private _usuario!: UserLoginResponse;
   public token!: string;
+  public tokenAuth!: string;
 
   get userGet(): UserLoginResponse {
     return { ...this._usuario }
@@ -45,10 +46,12 @@ export class AuthService {
       take(1),
       tap((user) => {
         if (user.ok) {
+          this.tokenAuth = user.token;
           this.guardarStorage(user.userLogin._id, user.token, user)
         }
       }),
       map((user) => {
+        this.tokenAuth = user.token;
         return user.ok;
       }),
       catchError((err) => {
@@ -65,19 +68,17 @@ export class AuthService {
     localStorage.setItem('usuario', JSON.stringify(usuario));
     this.userSet = usuario;
     this.token = token;
-
   }
 
 
   cargarStorage() {
     if (localStorage.getItem('token') || localStorage.getItem('usuario')) {
       this.userSet = JSON.parse(localStorage.getItem('usuario')!);
-      console.log('this.userSet', this.userGet)
       this.token = localStorage.getItem('token')!;
     } else {
       this.userSet = { ok: false, token: '', userLogin: { __v: 0, _id: '', created: null, email: '', img: '', name: '', password: '' } };
       this.token = '';
-      console.log('  this.userGet  cargarstorage', this.userGet)
+      // console.log('  this.userGet  cargarstorage', this.userGet)
     }
   }
 
@@ -90,4 +91,17 @@ export class AuthService {
     localStorage.removeItem('menu');
     this.router.navigate(['/login']);
   }
+
+  estaLogueado(): boolean | any {
+    try {
+      // tslint:disable-next-line: curly
+      if (localStorage.getItem('token') || localStorage.getItem('usuario')) return true;
+      // tslint:disable-next-line: curly
+      else return false;
+    } catch (error) {
+      console.log(error);
+    }
+
+  }
+
 }

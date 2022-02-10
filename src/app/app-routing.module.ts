@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ComponentsComponent } from './components/components.component';
+import { TokenValidateGuard } from './private/guards/token-validate.guard';
+import { PrivateComponent } from './private/private.component';
 
 const routes: Routes = [
   {
@@ -11,7 +13,8 @@ const routes: Routes = [
   },
   {
     path: 'private',
-    component: ComponentsComponent,
+    canActivate: [TokenValidateGuard],
+    component: PrivateComponent,
     loadChildren: () =>
       import('./private/private.module').then((m) => m.PrivateModule),
   },

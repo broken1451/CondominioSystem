@@ -3,7 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { InterceptorService } from './private/services/interceptor.interceptor';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,13 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, // constante
+      useClass: InterceptorService, // cual es elinterceptor
+      multi: true // para q este pendiente de todas la peticiones q hagamos
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
